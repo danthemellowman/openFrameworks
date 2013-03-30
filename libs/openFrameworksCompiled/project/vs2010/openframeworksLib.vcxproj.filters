@@ -249,6 +249,9 @@
     <ClInclude Include="..\..\..\openFrameworks\3d\of3dPrimitives.h">
       <Filter>libs\openFrameworks\3d</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\openFrameworks\graphics\of3dGraphics.h">
+      <Filter>libs\openFrameworks\graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\openFrameworks\app\ofAppGlutWindow.cpp">
@@ -424,6 +427,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\openFrameworks\3d\of3dPrimitives.cpp">
       <Filter>libs\openFrameworks\3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\openFrameworks\graphics\of3dGraphics.cpp">
+      <Filter>libs\openFrameworks\graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

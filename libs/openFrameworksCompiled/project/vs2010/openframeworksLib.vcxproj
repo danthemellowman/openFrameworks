@@ -99,6 +99,7 @@
     <ClInclude Include="..\..\..\openFrameworks\gl\ofTexture.h" />
     <ClInclude Include="..\..\..\openFrameworks\gl\ofVbo.h" />
     <ClInclude Include="..\..\..\openFrameworks\gl\ofVboMesh.h" />
+    <ClInclude Include="..\..\..\openFrameworks\graphics\of3dGraphics.h" />
     <ClInclude Include="..\..\..\openFrameworks\graphics\ofBitmapFont.h" />
     <ClInclude Include="..\..\..\openFrameworks\graphics\ofCairoRenderer.h" />
     <ClInclude Include="..\..\..\openFrameworks\graphics\ofGraphics.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="..\..\..\openFrameworks\gl\ofTexture.cpp" />
     <ClCompile Include="..\..\..\openFrameworks\gl\ofVbo.cpp" />
     <ClCompile Include="..\..\..\openFrameworks\gl\ofVboMesh.cpp" />
+    <ClCompile Include="..\..\..\openFrameworks\graphics\of3dGraphics.cpp" />
     <ClCompile Include="..\..\..\openFrameworks\graphics\ofBitmapFont.cpp" />
     <ClCompile Include="..\..\..\openFrameworks\graphics\ofCairoRenderer.cpp" />
     <ClCompile Include="..\..\..\openFrameworks\graphics\ofGraphics.cpp" />
