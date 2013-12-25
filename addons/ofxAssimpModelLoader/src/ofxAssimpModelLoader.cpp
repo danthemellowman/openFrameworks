@@ -693,7 +693,6 @@ void ofxAssimpModelLoader::draw(ofPolyRenderMode renderType) {
     }
     
     ofPushStyle();
-    
     if(!ofGetGLProgrammableRenderer()){
 	#ifndef TARGET_OPENGLES
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -824,6 +823,18 @@ ofMesh ofxAssimpModelLoader::getMesh(int num){
 	aiMeshToOfMesh(scene->mMeshes[num],ofm);
 	return ofm;
 }
+
+ofMatrix4x4 ofxAssimpModelLoader::getMeshMatrix(int index){
+    ofMatrix4x4 ofm;
+	if((int)scene->mNumMeshes<=index){
+		ofLogError("ofxAssimpModelLoader") << "getMesh(): mesh id " << index
+		<< " out of range for total num meshes: " << scene->mNumMeshes;
+		return ofm;
+	}
+    ofm = modelMeshes[index].matrix;
+    return ofm;
+}
+
 
 //-------------------------------------------
 ofMesh ofxAssimpModelLoader::getCurrentAnimatedMesh(string name){
