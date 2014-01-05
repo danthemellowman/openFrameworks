@@ -104,7 +104,7 @@ public:
     ofMatrix4x4 getModelMatrix();
     vector<ofMatrix4x4> getModelMatrixList();
     ofMatrix4x4 getMeshMatrix(int index);
-
+    
     
     ofPoint getSceneMin(bool bScaled = false);
     ofPoint	getSceneMax(bool bScaled = false);

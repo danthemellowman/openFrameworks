@@ -20,8 +20,12 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    ofxSVG svg;
+    vector<ofxSVG> svg;
     float step;
-    vector<ofPolyline> outlines;
+    vector<vector<ofPolyline> > outlines;
+    
+    int index;
+    float width;
+    float height;
     
 };
