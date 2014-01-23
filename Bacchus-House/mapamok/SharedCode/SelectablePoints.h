@@ -6,6 +6,7 @@
 class SelectablePoints : public EventWatcher {
 protected:
 	vector<DraggablePoint> points;
+    vector<DraggablePoint> calibrated;
 	set<unsigned int> selected;
 	
 	float pointSize, clickRadiusSquared;
@@ -21,9 +22,53 @@ public:
 		points.push_back(DraggablePoint());
 		points.back().position = v;
 	}
+    
+    void add(const ofVec2f& img, const ofVec3f& obj) {
+        points.push_back(DraggablePoint());
+        points.back().position = img;
+        points.back().modelPosition = obj;
+    }
 	void setClickRadius(float clickRadius) {
 		this->clickRadiusSquared = clickRadius * clickRadius;
 	}
+    
+    ofVec2f getImagePosition(int i){
+        if(points.size() > i)
+            return points[i].position;
+        else
+            return ofVec2f(0, 0);
+    }
+    ofVec3f getObjectPosition(int i){
+        if(points.size() > i)
+            return points[i].modelPosition;
+        else
+            return ofVec2f(0, 0);
+    }
+    
+    vector<ofVec2f> getSelectedPoints(){
+        vector<ofVec2f> foo;
+        for(vector<DraggablePoint>::iterator itr = calibrated.begin(); itr != calibrated.end(); ++itr) {
+            foo.push_back((*itr).position);
+        }
+        return foo;
+    }
+    
+    vector<ofVec3f> getSelectedModelPoints(){
+        vector<ofVec3f> foo;
+        for(vector<DraggablePoint>::iterator itr = calibrated.begin(); itr != calibrated.end(); ++itr) {
+            foo.push_back((*itr).position);
+        }
+        return foo;
+    }
+    
+    vector<ofVec3f> getModelPoints(){
+        vector<ofVec3f> foo;
+        for(vector<DraggablePoint>::iterator itr = calibrated.begin(); itr != calibrated.end(); ++itr) {
+            foo.push_back((*itr).modelPosition);
+        }
+        return foo;
+    }
+    
 	void mousePressed(ofMouseEventArgs& mouse) {
 		bool shift = ofGetKeyPressed(OF_KEY_SHIFT);
 		bool hitAny = false;
