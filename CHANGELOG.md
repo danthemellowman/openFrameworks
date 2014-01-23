@@ -28,9 +28,11 @@ CORE
 ### App
 	/ updated GLFW to latest master (20131204)
 ### Communication
+	/ use binary mode (don't convert breaklines)
 ### Events
 ### Graphics
 	/ ofCairoRenderer: fix for moveTo when drawing ofPaths
+	/ ofDrawBox: on wireframe mode was recreating vertices on every call
 ### Math
         / ofMatrix3x3: fix incorrect multiplication
 ### GL
@@ -60,6 +62,7 @@ PLATFORM SPECIFIC
 	/ makefile fixes for better eclipse parsing
 	/ videoplayer: fix alpha formats for gstreamer 0.10
 	+ install_dependencies installs libusb so ofxKinect compiles
+	- removed portaudio soundstream and all dependencies
 ### Windows
 	/ fixed disable vertical sync through update in glfw
  
