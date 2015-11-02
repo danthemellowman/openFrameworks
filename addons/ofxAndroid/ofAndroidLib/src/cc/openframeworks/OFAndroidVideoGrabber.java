@@ -63,48 +63,14 @@ Camera.PreviewCallback {
 	}
 
 	public void initGrabber(int w, int h, int _targetFps, int texID) {
-		if (deviceID == 0){
+		if (deviceID == REAR_FACING_CAMERA){
 			camera = Camera.open(getBackCameraId());
-		}else if(deviceID == 1){
+		}else if(deviceID == FRONT_FACING_CAMERA){
 			camera = Camera.open(getFrontCameraId());
 
 		}else{
 			camera = Camera.open();
 		}
-
-
-
-		//		else {
-		//			try {
-		//				int numCameras = (Integer) Camera.class.getMethod(
-		//						"getNumberOfCameras").invoke(null);
-		//				Class<?> cameraInfoClass = Class
-		//						.forName("android.hardware.Camera$CameraInfo");
-		//				Object cameraInfo = null;
-		//				Field field = null;
-		//				if (cameraInfoClass != null) {
-		//					cameraInfo = cameraInfoClass.newInstance();
-		//				}
-		//				if (cameraInfo != null) {
-		//					field = cameraInfo.getClass().getField("facing");
-		//				}
-		//				Method getCameraInfoMethod = Camera.class.getMethod(
-		//						"getCameraInfo", Integer.TYPE, cameraInfoClass);
-		//				for (int i = 0; i < numCameras; i++) {
-		//					getCameraInfoMethod.invoke(null, i, cameraInfo);
-		//					int facing = field.getInt(cameraInfo);
-		//					Log.v("OF", "Camera " + i + " facing: " + facing);
-		//				}
-		//				camera = (Camera) Camera.class.getMethod("open", Integer.TYPE)
-		//						.invoke(null, deviceID);
-		//			} catch (Exception e) {
-		//				// TODO Auto-generated catch block
-		//				Log.e("OF",
-		//						"Error trying to open specific camera, trying default",
-		//						e);
-		//				camera = Camera.open();
-		//			}
-		//		}
 
 		setTexture(texID);
 
@@ -132,9 +98,6 @@ Camera.PreviewCallback {
 		config.setPictureSize(w, h);
 		config.setPreviewSize(w, h);
 		config.setPreviewFormat(ImageFormat.NV21);
-//		if(deviceID == 1){
-			config.setRotation(0);
-//		}
 		
 		try {
 			Method setRecordingHint = config.getClass().getMethod(
@@ -415,6 +378,8 @@ Camera.PreviewCallback {
 
 	private Camera camera;
 	private int deviceID = 0;
+	private static int FRONT_FACING_CAMERA = 1;
+	private static int REAR_FACING_CAMERA = 0;
 	private byte[] buffer;
 	private int width, height, targetFps;
 	private Thread thread;
