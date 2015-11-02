@@ -216,7 +216,18 @@ void ofxAndroidVideoGrabber::update(){
 }
 
 void ofxAndroidVideoGrabber::close(){
-
+    JNIEnv *env = ofGetJNIEnv();
+    if(!env) return;
+    
+    jclass javaClass = getJavaClass();
+    
+    jmethodID javaclose = env->GetMethodID(javaClass,"close","()V");
+    if(data->javaVideoGrabber && javaclose){
+        env->CallVoidMethod(data->javaVideoGrabber,javaclose);
+    }else{
+        ofLogError("ofxAndroidVideoGrabber") << "close(): couldn't get OFAndroidVideoGrabber close method";
+    }
+    data->bGrabberInited = false;
 }
 
 
@@ -294,6 +305,7 @@ bool ofxAndroidVideoGrabber::setup(int w, int h){
 
 	ofLogVerbose("ofxAndroidVideoGrabber") << "initGrabber(): camera initialized correctly";
 	data->appPaused = false;
+    setAutoFocus(true);
 	return true;
 }
 
@@ -321,6 +333,8 @@ void ofxAndroidVideoGrabber::setDeviceID(int _deviceID){
 	JNIEnv *env = ofGetJNIEnv();
 	if(!env) return;
 
+    data->cameraId = _deviceID;
+    
 	jclass javaClass = getJavaClass();
 
 	jmethodID javasetDeviceID = env->GetMethodID(javaClass,"setDeviceID","(I)V");
@@ -644,6 +658,10 @@ Java_cc_openframeworks_OFAndroidVideoGrabber_newFrame(JNIEnv*  env, jobject  thi
 
 	env->ReleasePrimitiveArrayCritical(array,currentFrame ,0);
 	data->newPixels = true;
+    if(data->cameraId == 1){
+        data->backPixels.mirror(false, true);
+    }
+    swap(data->frontPixels, data->backPixels);
 	return 0;
 }
 }
