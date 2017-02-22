@@ -40,7 +40,6 @@ model {
                                       "**/ofFmodSoundPlayer.cpp",
                                       "**/ofOpenALSoundPlayer.cpp",
                                       "**/ofRtAudioSoundStream.cpp",
-
                                       "**/glew/**/*",
                                       "**/poco/include/Poc**/*",
                                       "**/poco/include/CppUni**/*",
