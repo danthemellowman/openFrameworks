@@ -3,21 +3,36 @@ apply plugin: 'com.android.model.library'
 model {
     android {
         compileSdkVersion = 19
-        buildToolsVersion = "23.0.3"
+        buildToolsVersion = "25.0.0"
     }
 
     android.sources {
         main {
-            manifest.source {
-                srcDir '.'
-                include 'AndroidManifest.xml'
+            // manifest.source {
+            //     srcDir '.'
+            // //     include 'AndroidManifest.xml'
+            // }
+            // java.source.srcDirs = ['src']
+            // // resources.source.srcDirs = ['src']
+            // // aidl.source.srcDirs = ['src']
+            // // renderscript.source.srcDirs = ['src']
+            // // res.source.srcDirs = ['res']
+            // // assets.source.srcDirs = ['assets']
+            manifest {
+                source {
+                    srcDirs = [ "." ]
+                }
             }
-            java.source.srcDirs = ['src']
-            resources.source.srcDirs = ['src']
-            aidl.source.srcDirs = ['src']
-            renderscript.source.srcDirs = ['src']
-            res.source.srcDirs = ['res']
-            assets.source.srcDirs = ['assets']
+            res {
+                source {
+                    srcDirs = [ "res" ]
+                }
+            }
+            java {
+                source {
+                    srcDirs = [ "src" ]
+                }
+            }
         }
     }
 }
