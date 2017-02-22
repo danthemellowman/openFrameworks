@@ -23,9 +23,7 @@ model {
                 jni {
                     source {
                         srcDirs =[
-                                ofSource,
-                                addons+"/ofxAndroid/src",
-                                addons+"/ofxAccelerometer/src"
+                                ofSource
                         ]
                         excludes = [  "**/ofQtUtils.cpp",
                                       "**/ofQuickTimeGrabber.cpp",
