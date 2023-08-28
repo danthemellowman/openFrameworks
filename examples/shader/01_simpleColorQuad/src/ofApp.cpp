@@ -19,9 +19,8 @@ void ofApp::draw(){
 	ofSetColor(255);
 	
 	shader.begin();
-	
-	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-	
+	shader.setUniform2f("size", ofGetWindowSize());
+	ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 	shader.end();
 }
 
